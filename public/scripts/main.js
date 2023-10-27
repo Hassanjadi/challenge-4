@@ -1,15 +1,17 @@
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
-  spaceBetween: 30,
-  slidesPerGroup: 1,
-  loop: true,
-  loopFillGroupWithBlank: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".next",
-    prevEl: ".prev",
-  },
-});
+/*
+ * Contoh kode untuk membaca query parameter,
+ * Siapa tau relevan! :)
+ * */
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+// Coba olah data ini hehe :)
+// console.log(params);
+
+/*
+ * Contoh penggunaan DOM di dalam class
+ * */
+const app = new App();
+
+app.init().then(app.run);

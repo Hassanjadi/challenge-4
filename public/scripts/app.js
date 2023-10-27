@@ -1,0 +1,84 @@
+class App {
+  constructor() {
+    this.clearButton = document.getElementById("clear-btn");
+    this.carContainerElement = document.getElementById("cars-container");
+    this.countResult = document.getElementById("count-result");
+    this.filterButton = document.getElementById("filter-btn");
+  }
+
+  async init() {
+    // Register click listener
+    this.clearButton.onclick = () => {
+      this.clear();
+      this.countResult.innerHTML = "";
+    };
+
+    this.filterButton.onclick = () => {
+      let filterByDriver = document.getElementById("driver").value === "true";
+
+      let filterByDate = document.getElementById("date").value;
+      const newDate = new Date(filterByDate);
+
+      let filterByHour = document.getElementById("time").value;
+      let filterByPass = document.getElementById("passenger").value;
+
+      this.getCarByFilter(
+        filterByDriver,
+        newDate.toLocaleDateString(),
+        parseInt(filterByHour),
+        parseInt(filterByPass)
+      );
+    };
+  }
+
+  run = () => {
+    Car.list.forEach((car) => {
+      const node = document.createElement("div");
+      node.classList.add();
+      node.innerHTML = car.render();
+      this.carContainerElement.appendChild(node);
+    });
+  };
+
+  async load() {
+    const cars = await Binar.listCars();
+    Car.init(cars);
+    this.run();
+  }
+
+  clear = () => {
+    let child = this.carContainerElement.firstElementChild;
+
+    while (child) {
+      child.remove();
+      child = this.carContainerElement.firstElementChild;
+    }
+  };
+
+  async getCarByFilter(avail, date, time, capacity) {
+    let data;
+    if (isNaN(capacity)) {
+      data = await Binar.listCars(
+        (car) =>
+          car.available === avail &&
+          car.availableAt.toLocaleDateString() >= date &&
+          car.availableAt.getHours() >= time
+      );
+    } else {
+      data = await Binar.listCars(
+        (car) =>
+          car.available === avail &&
+          car.capacity === capacity &&
+          car.availableAt.toLocaleDateString() >= date &&
+          car.availableAt.getHours() >= time
+      );
+    }
+
+    Car.init(data);
+
+    this.countResult.innerHTML = `<b>Hasil :</b> ${data.length} mobil ditemukan`;
+
+    this.clear();
+    this.run();
+  }
+}
