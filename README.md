@@ -3,7 +3,7 @@
 - Mulai modifikasi file `server/index.js` apabila ingin membuat HTTP server.
 - Mulai modifikasi folder `public` apabila ingin memodifikasi HTML.
 
-![Images Hasil](https://ibb.co/NK8pyS8][img]https://i.ibb.co/WfbF2tb/Screenshot-2023-10-27-at-22-48-26-Cari-Mobil.png)
+![Images Hasil](https://i.ibb.co/WfbF2tb/Screenshot-2023-10-27-at-22-48-26-Cari-Mobil.png)
 
 # `Binar` class
 
