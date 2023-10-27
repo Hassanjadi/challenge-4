@@ -3,6 +3,8 @@
 - Mulai modifikasi file `server/index.js` apabila ingin membuat HTTP server.
 - Mulai modifikasi folder `public` apabila ingin memodifikasi HTML.
 
+![Images Hasil]([https://example.com/path/to/image.png](https://ibb.co/NK8pyS8))
+
 # `Binar` class
 
 Class ini berisi 1 static method saja, yang berfungsi untuk mengambil data mobil dari internet.
