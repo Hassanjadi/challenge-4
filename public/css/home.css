@@ -1,0 +1,508 @@
+:root {
+  --primary: #0d28a6;
+  --limegreen: #5cb85f;
+  --limegreen01: #f1f3ff;
+  --neutral: #151515;
+}
+
+body {
+  font-family: "Helvetica";
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  margin: 16px 0 16px 0;
+}
+
+.header .navbar-brand {
+  width: 100px;
+  height: 34px;
+  background-color: var(--primary);
+}
+
+.header .register {
+  background-color: var(--limegreen);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    max-width: 50%;
+    backdrop-filter: blur(20px);
+  }
+
+  .register {
+    display: flex;
+    padding: 8px 12px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .navbar-toggler-icon {
+    background: #222222;
+  }
+}
+
+.header .nav-link {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.active {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--limegreen01);
+  padding-top: 100px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 54px;
+}
+
+.hero p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.hero a {
+  text-decoration: none;
+  border: 0;
+  width: 140px;
+  height: 36px;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 8px 12px;
+  background-color: var(--limegreen);
+}
+
+.hero-img {
+  margin-top: 250px;
+}
+
+@media (min-width: 991px) {
+  .hero {
+    background-color: var(--limegreen01);
+    padding-top: 72px;
+    position: relative;
+    height: 500px;
+  }
+
+  .hero-desc {
+    height: 428px;
+    display: flex;
+    align-items: center;
+  }
+}
+/* End Hero */
+
+/* Our Service */
+.service {
+  margin-top: 60px;
+}
+
+.service h2 {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.service p {
+  color: var(--neutral);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 991px) {
+  .service {
+    padding-top: 25px;
+  }
+}
+/* End Our Service */
+
+/* Why Us */
+.why-us {
+  margin-top: 60px;
+}
+
+.section-title {
+  margin-bottom: 24px;
+}
+
+.why-us .section-title h2 {
+  color: var(--neutral);
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  margin-bottom: 16px;
+}
+
+.why-us .section-title p {
+  color: var(--neutral);
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.why-us .whyus-card {
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+}
+
+.why-us .whyus-card h3 {
+  font-size: 16px;
+}
+
+.why-us .whyus-card p {
+  font-size: 14px;
+}
+
+.why-us .whyus-card img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 992px) {
+  .why-us {
+    padding-top: 50px;
+  }
+}
+/* Why Us */
+
+/* Testimonial */
+.testimonial {
+  overflow: hidden;
+  padding-top: 60px;
+}
+
+.testimonial .swiper {
+  width: 1700px;
+  padding: 0 14px;
+}
+
+.card-testimonial {
+  width: 347px;
+  border-radius: 8px;
+  padding: 40px 32px;
+  background-color: #f1f3ff;
+}
+
+.testimonial h2 {
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.testimonial p {
+  text-align: center;
+  font-style: normal;
+  line-height: 20px;
+  font-weight: 300;
+  font-size: 14px;
+  color: #000;
+}
+
+.testimonial .desc-testi p {
+  text-align: start;
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.testimonial .desc-testi span {
+  font-family: Helvetica;
+  font-style: normal;
+  line-height: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.testimonial .pagination {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.testimonial .prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  background: #fff;
+}
+
+.testimonial .next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--limegreen);
+  border-radius: 50%;
+  flex-shrink: 0;
+  color: #fff;
+  height: 32px;
+  width: 32px;
+  border: 0;
+}
+
+@media (min-width: 728px) {
+  .testimonial {
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial .swiper {
+    position: absolute;
+    top: 35%;
+    width: 1700px;
+    height: fit-content;
+  }
+
+  .swiper-slide {
+    max-width: 619px;
+    height: 270px;
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    background: #f1f3ff;
+  }
+
+  .testimonial .card-testimonial {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .testimonial .pagination {
+    display: flex;
+    gap: 16px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .images-testi {
+    width: 80px;
+    height: 80px;
+  }
+
+  .desc-testi {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+/* End Testimonial */
+
+/* CTA */
+.cta {
+  margin-top: 60px;
+}
+
+.cta .banner {
+  background-color: var(--primary);
+  padding: 64px;
+  border-radius: 24px;
+}
+
+.cta .banner-desc h2 {
+  line-height: 36px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.cta .banner-desc p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ffffff;
+  line-height: 20px;
+}
+
+.cta button {
+  background-color: var(--limegreen);
+  width: 140px;
+  height: 36px;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 0;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+@media (min-width: 991px) {
+  .cta {
+    padding-top: 50px;
+  }
+
+  .cta .banner-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta .banner-desc p {
+    width: 468px;
+  }
+}
+/* End CTA */
+
+/* Frequently Asked Questions */
+.faq {
+  margin-top: 60px;
+}
+
+.faq .section-title h2 {
+  color: #000;
+  font-family: Helvetica;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  text-align: center;
+}
+
+.faq .section-title p {
+  color: #000;
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+  text-align: center;
+}
+
+.accordion-item {
+  border: 0;
+}
+
+.accordion-header {
+  padding: 8px 8px;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+}
+
+@media (min-width: 991px) {
+  .faq {
+    padding-top: 100px;
+  }
+  .faq .section-title h2 {
+    text-align: start;
+  }
+}
+/* End Frequently Asked Questions */
+
+/* Footer */
+.footer {
+  margin: 60px 0 60px 0;
+}
+
+.footer .address p {
+  color: var(--neutral);
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.footer .menu a {
+  color: var(--neutral);
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.footer .account p {
+  color: var(--neutral);
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.footer .account .social-media a {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.footer .copyright p {
+  color: var(--neutral);
+  font-family: Helvetica;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.footer .copyright img {
+  padding: 15px 50px 15px 50px;
+  background-color: var(--primary);
+}
+
+@media (min-width: 991px) {
+  .footer {
+    padding-top: 50px;
+  }
+}
+/* End Footer */
