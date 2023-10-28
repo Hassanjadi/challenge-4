@@ -22,7 +22,6 @@ class Car {
     specs,
     availableAt,
   }) {
-    // super();
     this.id = id;
     this.plate = plate;
     this.manufacture = manufacture;
@@ -42,16 +41,16 @@ class Car {
 
   render() {
     return `
-    <div class="card col">
+       <div class="card col">
       <div class="card-images d-flex justify-content-center align-items-center w-100">
         <img src="${this.image}" alt="${this.manufacture}" class="images-car"/>
       </div>
       <div class="card-descriptions">
         <p class="name">${this.manufacture} ${this.model} / ${this.type}</p>
         <p class="price">Rp. ${this.rentPerDay} / Hari</p>
-        <p class="desc">${this.description}</p>
+        <p class="desc h-50">${this.description}</p>
       </div>
-      <div class="card-info">
+      <div class="card-info d-flex flex-column gap-2">
         <div class="d-flex gap-3 justify-content-start">
           <span><i class="icon" data-feather="users"></i></span>
           <p>${this.capacity} Orang</p>

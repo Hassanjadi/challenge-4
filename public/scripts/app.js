@@ -1,40 +1,54 @@
 class App {
   constructor() {
-    this.clearButton = document.getElementById("clear-btn");
     this.carContainerElement = document.getElementById("cars-container");
-    this.countResult = document.getElementById("count-result");
+    this.driverCheckbox = document.getElementById("driver-checkbox");
+    this.passengerInput = document.getElementById("passenger-input");
+    this.rentDateInput = document.getElementById("rent-date-input");
+    this.rentTimeInput = document.getElementById("rent-time-input");
     this.filterButton = document.getElementById("filter-btn");
   }
 
   async init() {
-    // Register click listener
-    this.clearButton.onclick = () => {
-      this.clear();
-      this.countResult.innerHTML = "";
-    };
+    // Set tombol filter menjadi disabled saat inisialisasi
+    this.filterButton.disabled = true;
 
-    this.filterButton.onclick = () => {
-      let filterByDriver = document.getElementById("driver").value === "true";
+    // Event listener untuk mendeteksi perubahan pada field input
+    this.passengerInput.addEventListener("input", this.handleInputChange);
+    this.rentDateInput.addEventListener("input", this.handleInputChange);
+    this.rentTimeInput.addEventListener("input", this.handleInputChange);
+    this.driverCheckbox.addEventListener("change", this.handleInputChange);
 
-      let filterByDate = document.getElementById("date").value;
-      const newDate = new Date(filterByDate);
+    this.filterButton.onclick = this.filterCars;
+    await this.load();
 
-      let filterByHour = document.getElementById("time").value;
-      let filterByPass = document.getElementById("passenger").value;
-
-      this.getCarByFilter(
-        filterByDriver,
-        newDate.toLocaleDateString(),
-        parseInt(filterByHour),
-        parseInt(filterByPass)
-      );
-    };
+    this.resetFilters();
   }
+
+  // Reset nilai input
+  resetFilters() {
+    this.passengerInput.value = "";
+    this.rentDateInput.value = "";
+    this.rentTimeInput.value = "";
+    this.driverCheckbox.value = "";
+
+    this.handleInputChange();
+  }
+
+  handleInputChange = () => {
+    // Memeriksa field input terisi atau tidak
+    const isInputValid =
+      this.passengerInput.value.trim() !== "" &&
+      this.rentDateInput.value.trim() !== "" &&
+      this.rentTimeInput.value.trim() !== "" &&
+      this.driverCheckbox.value.trim() !== "";
+
+    // disable button ketika belum terisi
+    this.filterButton.disabled = !isInputValid;
+  };
 
   run = () => {
     Car.list.forEach((car) => {
       const node = document.createElement("div");
-      node.classList.add();
       node.innerHTML = car.render();
       this.carContainerElement.appendChild(node);
     });
@@ -45,40 +59,46 @@ class App {
     Car.init(cars);
     this.run();
   }
+  filterCars = () => {
+    // Mendapatkan value dari input user
+    const passengerCount = parseInt(this.passengerInput.value, 10);
+    const rentDate = new Date(this.rentDateInput.value);
+    const rentTime = this.rentTimeInput.value;
+    const withDriver = this.driverCheckbox.value;
 
-  clear = () => {
-    let child = this.carContainerElement.firstElementChild;
+    // Filter mobil berdasarkan kapasitas penumpang, tanggal sewa, jam sewa, dan pilih driver
+    const filteredCars = Car.list.filter((car) => {
+      const carRentDate = new Date(car.availableAt);
 
-    while (child) {
-      child.remove();
-      child = this.carContainerElement.firstElementChild;
+      return (
+        car.capacity > passengerCount &&
+        car.availableAt > rentDate &&
+        carRentDate > rentDate &&
+        (withDriver ? car.options.withDriver : true) &&
+        carRentDate.getHours() === parseInt(rentTime.split(":")[0], 10)
+      );
+    });
+
+    this.clear();
+
+    // Menampilkan mobil yang telah difilter
+    if (filteredCars.length > 0) {
+      filteredCars.forEach((car) => {
+        const node = document.createElement("div");
+        node.innerHTML = car.render();
+        this.carContainerElement.appendChild(node);
+      });
+    } else {
+      const noCarsMessage = document.createElement("div");
+      noCarsMessage.id = "no-cars-message";
+      noCarsMessage.textContent = "Mobil yang Anda cari tidak tersedia! ⛔";
+      this.carContainerElement.appendChild(noCarsMessage);
     }
   };
 
-  async getCarByFilter(avail, date, time, capacity) {
-    let data;
-    if (isNaN(capacity)) {
-      data = await Binar.listCars(
-        (car) =>
-          car.available === avail &&
-          car.availableAt.toLocaleDateString() >= date &&
-          car.availableAt.getHours() >= time
-      );
-    } else {
-      data = await Binar.listCars(
-        (car) =>
-          car.available === avail &&
-          car.capacity === capacity &&
-          car.availableAt.toLocaleDateString() >= date &&
-          car.availableAt.getHours() >= time
-      );
+  clear() {
+    while (this.carContainerElement.firstChild) {
+      this.carContainerElement.firstChild.remove();
     }
-
-    Car.init(data);
-
-    this.countResult.innerHTML = `<b>Hasil :</b> ${data.length} mobil ditemukan`;
-
-    this.clear();
-    this.run();
   }
 }
