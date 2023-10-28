@@ -39,8 +39,7 @@ class App {
     const isInputValid =
       this.passengerInput.value.trim() !== "" &&
       this.rentDateInput.value.trim() !== "" &&
-      this.rentTimeInput.value.trim() !== "" &&
-      this.driverCheckbox.value.trim() !== "";
+      this.rentTimeInput.value.trim() !== "";
 
     // disable button ketika belum terisi
     this.filterButton.disabled = !isInputValid;
@@ -64,7 +63,7 @@ class App {
     const passengerCount = parseInt(this.passengerInput.value, 10);
     const rentDate = new Date(this.rentDateInput.value);
     const rentTime = this.rentTimeInput.value;
-    const withDriver = this.driverCheckbox.value;
+    const withDriver = this.driverCheckbox.checked;
 
     // Filter mobil berdasarkan kapasitas penumpang, tanggal sewa, jam sewa, dan pilih driver
     const filteredCars = Car.list.filter((car) => {
